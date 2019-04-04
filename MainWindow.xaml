@@ -1,0 +1,72 @@
+﻿<Window x:Class="UiDesignTinkering.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UiDesignTinkering"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <local:RadioButtonCheckedConverter x:Key="RadioButtonConverter"/>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <RadioButton GroupName="MainViews" 
+                         IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.ServiceCharge}}">
+                Service Charge
+            </RadioButton>
+            <RadioButton GroupName="MainViews" 
+                         IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.Insurance}}">
+                Insurance
+            </RadioButton>
+            <RadioButton GroupName="MainViews" 
+                         IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.Rent}}">
+                Rent
+            </RadioButton>
+            <RadioButton GroupName="MainViews" 
+                         IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.Scheme}}">
+                Scheme
+            </RadioButton>
+            <RadioButton GroupName="MainViews" 
+                         IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.Client}}">
+                Client
+            </RadioButton>
+            <RadioButton GroupName="MainViews" 
+                         IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.News}}">
+                News
+            </RadioButton>
+            <RadioButton GroupName="MainViews" 
+                         IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.Task}}">
+                Task
+            </RadioButton>
+        </StackPanel>
+        <Grid Grid.Column="1" Margin="5">
+            <StackPanel Visibility="{Binding ServiceChargeStoreViewModel.HasFocus, Converter={StaticResource BoolToVisibilityConverter}}">
+                <local:ServiceChargeView DataContext="{Binding ServiceChargeStoreViewModel}"/>
+            </StackPanel>
+            <StackPanel Visibility="{Binding InsuranceStoreViewModel.HasFocus, Converter={StaticResource BoolToVisibilityConverter}}">
+                <local:InsuranceView DataContext="{Binding InsuranceStoreViewModel}"/>
+            </StackPanel>
+            <StackPanel Visibility="{Binding RentStoreViewModel.HasFocus, Converter={StaticResource BoolToVisibilityConverter}}">
+                <local:RentView DataContext="{Binding RentStoreViewModel}"/>
+            </StackPanel>
+            <StackPanel Visibility="{Binding SchemeViewModel.HasFocus, Converter={StaticResource BoolToVisibilityConverter}}">
+                <local:SchemeView DataContext="{Binding SchemeViewModel}"/>
+            </StackPanel>
+            <StackPanel Visibility="{Binding ClientViewModel.HasFocus, Converter={StaticResource BoolToVisibilityConverter}}">
+                <local:ClientView DataContext="{Binding ClientViewModel}"/>
+            </StackPanel>
+            <StackPanel Visibility="{Binding NewsViewModel.HasFocus, Converter={StaticResource BoolToVisibilityConverter}}">
+                <local:NewsView DataContext="{Binding NewsViewModel}"/>
+            </StackPanel>
+            <StackPanel Visibility="{Binding TaskViewModel.HasFocus, Converter={StaticResource BoolToVisibilityConverter}}">
+                <local:TaskView DataContext="{Binding TaskViewModel}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
