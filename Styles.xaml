@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
     <SolidColorBrush x:Key="WindowBackgroundBrush" Color="{x:Static SystemColors.WindowColor}" />
-    <SolidColorBrush x:Key="ControlBackgroundBrush" Color="Transparent" />
+    <SolidColorBrush x:Key="ControlBackgroundBrush" Color="White" />
     <SolidColorBrush x:Key="HeaderForegroundBrush" Color="{x:Static SystemColors.ControlDarkDarkColor}" />
     <SolidColorBrush x:Key="HeaderBackgroundBrush" Color="{x:Static SystemColors.ControlColor}" />
     <SolidColorBrush x:Key="ForegroundBrush" Color="{x:Static SystemColors.ControlTextColor}" />
@@ -15,15 +15,22 @@
     <SolidColorBrush x:Key="SelectedDataGridCellForegroundBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <!--Yellow is best for High Contrast and looks ok on normal, but I got complaints from Miranda :( -->
     <SolidColorBrush x:Key="SelectedDataGridCellBackgroundBrush" Color="{x:Static SystemColors.InactiveCaptionColor}"/>
-    
-    
-    <Style TargetType="ToggleButton" x:Key="TabLikeToggleButton">
-        <Setter Property="BorderThickness" Value="0"/>
+
+    <DataTemplate x:Key="ControlContentBackgroundTemplate">
+        <Grid Background="{StaticResource ControlBackgroundBrush}">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Text="{Binding}"/>
+        </Grid>
+    </DataTemplate>
+
+    <Style TargetType="ToggleButton" x:Key="TabLikeToggleButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-        <Setter Property="Background" Value="{DynamicResource ControlBackgroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource HeaderBackgroundBrush}"/>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="{DynamicResource HeaderForegroundBrush}"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="ContentTemplate" Value="{StaticResource ControlContentBackgroundTemplate}"/>
+                <Setter Property="BorderThickness" Value="1,1,0,1"/>
             </Trigger>
         </Style.Triggers>
     </Style>

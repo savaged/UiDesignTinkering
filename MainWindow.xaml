@@ -17,30 +17,37 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
             <RadioButton GroupName="MainViews" 
+                         Style="{StaticResource TabLikeToggleButton}"
                          IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.ServiceCharge}}">
                 Service Charge
             </RadioButton>
             <RadioButton GroupName="MainViews" 
+                         Style="{StaticResource TabLikeToggleButton}"
                          IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.Insurance}}">
                 Insurance
             </RadioButton>
             <RadioButton GroupName="MainViews" 
+                         Style="{StaticResource TabLikeToggleButton}"
                          IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.Rent}}">
                 Rent
             </RadioButton>
-            <RadioButton GroupName="MainViews" 
+            <RadioButton GroupName="MainViews"
+                         Style="{StaticResource TabLikeToggleButton}"
                          IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.Scheme}}">
                 Scheme
             </RadioButton>
             <RadioButton GroupName="MainViews" 
+                         Style="{StaticResource TabLikeToggleButton}"
                          IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.Client}}">
                 Client
             </RadioButton>
             <RadioButton GroupName="MainViews" 
+                         Style="{StaticResource TabLikeToggleButton}"
                          IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.News}}">
                 News
             </RadioButton>
             <RadioButton GroupName="MainViews" 
+                         Style="{StaticResource TabLikeToggleButton}"
                          IsChecked="{Binding MainViewSelected, Converter={StaticResource RadioButtonConverter}, ConverterParameter={x:Static local:MainViews.Task}}">
                 Task
             </RadioButton>
